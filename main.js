@@ -171,9 +171,10 @@ over.src= "images/over.png"
 var princess = new Image()
 princess.src = "images/princess.png"
 
-document.addEventListener("keydown", jump)
+document.addEventListener("keydown", moveMario)
 
-function jump(event) {
+function moveMario(event) {
+    var posX = marioX, posY = marioY;
     if(event.keyCode == 32 && marioY >= h-250) {
         marioY -= 150
     }
@@ -182,6 +183,12 @@ function jump(event) {
     }
     if(event.keyCode == 39) {
         marioX += 10
+    }
+    
+    var mW = 25, mH = marioH/2;
+    if(marioX<0-mW || marioX>w-mW || marioY<0-mH || marioY>h-mh) {
+          marioX = posX;
+          marioY = posY;
     }
 }
 
@@ -318,7 +325,7 @@ function update(){
 }
 var n = 1
 function draw(){
-    ctx.drawImage(bg, bgX, 0 ,w, h)
+    ctx.drawImage(bg, bgX, 0 ,w+150, h)
     ctx.drawImage(bush1, w-170 ,h-108, 80,50)
     ctx.drawImage(bush2, 100 ,h-108, 120,50)
     ctx.drawImage(pipe, w/2,h-167, 50,110)
