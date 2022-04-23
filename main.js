@@ -82,6 +82,8 @@ function playClicked(event) {
 marioBGM.oncanplaythrough = bg.onload = playBtn.onload  = wait
 
 function start() {
+    marioBGM.play()
+    
     var turtle = new Image();
 var turtleImages = ["images/t1.png", "images/t2.png"]
 for(var i=1; i<=2; i++) {
