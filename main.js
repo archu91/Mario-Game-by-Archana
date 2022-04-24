@@ -1,6 +1,8 @@
 var canvas = document.querySelector("canvas");
 var ctx = canvas.getContext("2d");
 
+//ctx.canvas.width  = window.innerWidth;
+//ctx.canvas.height = window.innerHeight
 var w = canvas.width;
 var h = canvas.height;
 
@@ -138,7 +140,7 @@ for(var i=3; i<=1; i--) {
 }
 var flowerImg = 0
 flower.src = flowerImages[flowerImg]
-var flowerX = w/2+2, flowerY = h-215;
+var flowerX = w/2, flowerY = h-218;
 
 var coin = new Image()
 var coinImages = ["images/mo1.png", "images/mo2.png", "images/mo3.png"]
@@ -165,7 +167,8 @@ var coinY = Math.random()*(100);
 
 var mushroom = new Image()
 mushroom.src = "images/mushroom.png"
-var mX = coinX, mY = coinY, mush = true;
+var mmin = w/2-100, mmax = w-200
+var mX = (Math.random()*(mmax-mmin+1))+ mmin, mY = coinY, mush = true;
 var win = new Image()
 win.src= "images/won.gif"
 var over = new Image()
@@ -278,7 +281,7 @@ function update(){
         else if(flower_coll) {
             flowerY = -100
             setTimeout(() => {
-                flowerY = h-215
+                flowerY = h-218
             }, 3000);
         }
         
